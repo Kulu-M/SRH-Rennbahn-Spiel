@@ -8,7 +8,9 @@ namespace SRH_Rennbahn.Classes
 {
     class Player
     {
-        public string Name { get; set; }
-        public int Wallet { get; set; }
+        public string name { get; set; }
+        public int wallet { get; set; }
+        public int startmoney { get; set; }
+        public bool npc { get; set; }
     }
 }

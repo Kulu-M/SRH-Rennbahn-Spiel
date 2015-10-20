@@ -8,7 +8,10 @@ namespace SRH_Rennbahn.Classes
 {
     class Racer
     {
-        public string Name { get; set; }
-        public double Skill { get; set; }
+        public string name { get; set; }
+        public int raceCount { get; set; }
+        public int racesWon { get; set; }
+        public double skill { get; set; }
+        public string picPath { get; set; }
     }
 }

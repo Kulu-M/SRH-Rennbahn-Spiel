@@ -108,6 +108,30 @@
   <ItemGroup>
     <Resource Include="Rennbahn_Concept.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\alien1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\alien2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\pika1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\pika2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\ninja1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\ninja2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\zombie1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\zombie2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

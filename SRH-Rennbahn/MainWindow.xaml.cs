@@ -29,7 +29,7 @@ namespace SRH_Rennbahn
         {
             InitializeComponent();
 
-            timer.Interval = TimeSpan.FromSeconds(0.01);
+            timer.Interval = TimeSpan.FromSeconds(0.1);
             timer.Tick += Timer_Tick;
         }
 
@@ -55,6 +55,10 @@ namespace SRH_Rennbahn
         {
             BitmapImage bi = new BitmapImage(new Uri(imgname, UriKind.Relative));
             imageSonic.Source = bi;
+            imageAlien.Source = bi;
+            imageNinja.Source = bi;
+            imageZombie.Source = bi;
+            imagePika.Source = bi;
         }
 
 
