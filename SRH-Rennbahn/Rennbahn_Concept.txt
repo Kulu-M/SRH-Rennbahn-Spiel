@@ -1,0 +1,64 @@
+Bis Donnerstag:
+	- Klassen erstellen
+	- 4 Racer
+	- Rennbahnen
+	- UI siehe unten
+	- Combo Box für Spieler/Huhn
+	- ...
+
+
+
+Festlegungen:
+
+Fenster: 1200x800
+
+Höhe: 800px
+Ein Rennteilnehmer: 70px
+Die Bahnen: 100px
+
+
+
+Breite: 1200px
+Rennbahn: 1100px (li+re je 50px)
+
+
+---
+
+
+
+
+Allgemein:
+	- Spieler hat Anfangsbetrag x
+	- Bank hat unbegrenzte Mittel
+	- Man wettet auf ein Auto
+	- Sollte gewähltes Auto erster werden, so wird der Einsatz als Gewinn verdoppelt
+	- Sollte gewähltes Auto nicht erster werden, wird eingesetztes Geld von Geldbeutel abegezogen
+	- Wenn Geld leer ist kann Kredit augenommen werden?
+
+
+Rennen:
+	- Anzahl X an Rennwägen
+	- Zufallsbasierte Ergebnisse
+	- Möglichkeit auf Ausfall eines Wagens
+	- Spieler Einfluss/Interaktion auf Rennen? Durch mehr Geldeinsatz --> höhere Gewinn- aber auch Ausfallwahrscheinlichkeit? (illegales Motortuning, etc...)
+
+
+Nach Rennen --> Ergebnisübersicht
+	- Welches Auto auf welchem Platz + Zeiten bzw. Ausfälle
+	- Sieg oder Niederlage des Spielers
+	- Anzeige des Gewinns und des neuen Geldbeutel Bestandes
+
+	--> Rückehr ins Hauptmenü oder Game Settings Menü?
+
+
+Bildschirm 1: Hauptmenü
+
+B 2: Game Settings
+Zeigt nächstes Rennen an, der Spieler wählt zu wettende Element und Betrag
+
+B 3 : Game
+Läuft ab (mit/ohne Interaktionsmöglichkeit)
+
+B 4 : Ergebnis
+
+B 5 : MainMenu

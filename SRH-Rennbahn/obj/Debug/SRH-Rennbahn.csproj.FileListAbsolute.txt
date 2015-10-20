@@ -1,0 +1,17 @@
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\bin\Debug\SRH-Rennbahn.exe.config
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\bin\Debug\SRH-Rennbahn.exe
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\bin\Debug\SRH-Rennbahn.pdb
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\MainWindow.g.cs
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\App.g.cs
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\SRH-Rennbahn_MarkupCompile.cache
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\SRH-Rennbahn_MarkupCompile.lref
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\MainWindow.baml
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.g.resources
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\SRH_Rennbahn.Properties.Resources.resources
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.csproj.GenerateResource.Cache
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.exe
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.pdb
+C:\Users\Kulu-M\Documents\SRH-Rennbahn\SRH-Rennbahn\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.csprojResolveAssemblyReference.cache
+C:\Users\Kulu-M\Documents\SRH-Rennbahn-Private\SRH-Rennbahn\bin\Debug\SRH-Rennbahn.exe.config
+C:\Users\Kulu-M\Documents\SRH-Rennbahn-Private\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.exe
+C:\Users\Kulu-M\Documents\SRH-Rennbahn-Private\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.pdb
