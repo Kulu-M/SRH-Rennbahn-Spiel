@@ -100,38 +100,42 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\sonic1.png" />
+    <Resource Include="Pics\Sonic\0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\sonic2.png" />
+    <Resource Include="Pics\Sonic\1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Rennbahn_Concept.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\alien1.png" />
+    <Resource Include="Pics\Alien\0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\alien2.png" />
+    <Resource Include="Pics\Alien\1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\pika1.png" />
+    <Resource Include="Pics\Pikachu\0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\pika2.png" />
+    <Resource Include="Pics\Pikachu\1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\ninja1.png" />
+    <Resource Include="Pics\Ninja\0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\ninja2.png" />
+    <Resource Include="Pics\Ninja\1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\zombie1.png" />
+    <Resource Include="Pics\Zombie\0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\zombie2.png" />
+    <Resource Include="Pics\Zombie\1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\Alien\2.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
