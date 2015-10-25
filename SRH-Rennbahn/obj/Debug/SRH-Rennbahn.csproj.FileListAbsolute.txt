@@ -28,7 +28,6 @@ C:\Users\Kulu\Documents\SRH-Rennbahn-Spiel-\SRH-Rennbahn\obj\Debug\SRH_Rennbahn.
 C:\Users\Kulu\Documents\SRH-Rennbahn-Spiel-\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.csproj.GenerateResource.Cache
 C:\Users\Kulu\Documents\SRH-Rennbahn-Spiel-\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.exe
 C:\Users\Kulu\Documents\SRH-Rennbahn-Spiel-\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.pdb
-C:\Users\Kulu\Documents\SRH-Rennbahn-Spiel-\SRH-Rennbahn\obj\Debug\SRH-Rennbahn.csprojResolveAssemblyReference.cache
 C:\Users\Kulu-M\Documents\SRH-Rennbahn-Private\SRH-Rennbahn\bin\Debug\SRH-Rennbahn.exe
 C:\Users\Kulu-M\Documents\SRH-Rennbahn-Private\SRH-Rennbahn\bin\Debug\SRH-Rennbahn.pdb
 C:\Users\Kulu-M\Documents\SRH-Rennbahn-Private\SRH-Rennbahn\obj\Debug\MainWindow.g.cs

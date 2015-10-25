@@ -22,6 +22,8 @@ namespace SRH_Rennbahn
     /// </summary>
     public partial class MainWindow : Window
     {
+        public object winner;
+    
 
         double finishLine;
         DispatcherTimer timer = new DispatcherTimer();
@@ -32,26 +34,24 @@ namespace SRH_Rennbahn
         {
             InitializeComponent();
 
-            timer.Interval = TimeSpan.FromSeconds(0.01);
+            timer.Interval = TimeSpan.FromSeconds(0.1);
             timer.Tick += Timer_Tick;
         }
-
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
             finishLine = (double)brd_finishline.GetValue(Canvas.LeftProperty);
 
-
-            //Aus einem Pool von Racern nur einige aussuchen, die starten
-            startingRacers.Add(App._gameDaten.racersList[1]);
-            startingRacers.Add(App._gameDaten.racersList[2]);
-            for (int i = 0; i < 2; i++)
-            {
-                Image img = (Image) can_racetrack.FindName("image_" + i);
-                var path = "Pics/" + startingRacers[i].name + "/0.png";
-                BitmapImage bmi = new BitmapImage(new Uri(path, UriKind.Relative));
-                img.Source = bmi;
-            }
+            ////Aus einem Pool von Racern nur einige aussuchen, die starten
+            //startingRacers.Add(App._gameDaten.racersList[1]);
+            //startingRacers.Add(App._gameDaten.racersList[2]);
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    Image img = (Image) can_racetrack.FindName("image_" + i);
+            //    var path = "Pics/" + startingRacers[i].name + "/0.png";
+            //    BitmapImage bmi = new BitmapImage(new Uri(path, UriKind.Relative));
+            //    img.Source = bmi;
+            //}
 
 
 
@@ -71,43 +71,108 @@ namespace SRH_Rennbahn
             //---
         }
 
-
         bool wechsel = false;
         private void Timer_Tick(object sender, EventArgs e)
         {
-            var posX = (double)image_1.GetValue(Canvas.LeftProperty) + 10;
-            image_1.SetValue(Canvas.LeftProperty, posX);
+            //Method to check for finishline
+            checkFinishLine();
 
-            //END OF RACE
-            if (posX >= finishLine)
-            { 
-                timer.Stop();
-                b_reset.IsEnabled = true;
-                BitmapImage bild = new BitmapImage(new Uri("Pics/alien3.png", UriKind.Relative));
-                image_1.Source = bild;
-            }
-
+            //Method to move pictures
+            imageMover(image_0);
+            imageMover(image_1);
+            imageMover(image_2);
+            imageMover(image_3);
+            imageMover(image_4);
+            
+           
             //CHANGE IMAGES
-            if (wechsel)
-                imageChanger("Pics/sonic2.png", image_1.Source);
-            else
-                imageChanger("Pics/sonic1.png", image_1.Source);
-
+            if (wechsel) { 
+                imageChanger("Pics/Sonic/0.png", image_1);
+                imageChanger("Pics/Alien/0.png", image_0);
+                imageChanger("Pics/Ninja/0.png", image_3);
+                imageChanger("Pics/Pikachu/0.png", image_2);
+                imageChanger("Pics/Zombie/0.png", image_4);
+            }
+            else { 
+                imageChanger("Pics/Sonic/1.png", image_1);
+                imageChanger("Pics/Alien/1.png", image_0);
+                imageChanger("Pics/Ninja/1.png", image_3);
+                imageChanger("Pics/Pikachu/1.png", image_2);
+                imageChanger("Pics/Zombie/1.png", image_4);
+            }
             wechsel = !wechsel;
+            
         }
 
+        private void checkFinishLine()
+        {
+            //Check for end of race
+            if (posX >= finishLine)
+            {
+                timer.Stop();
+                b_reset.IsEnabled = true;
+            }
+        }
+
+        public double posX;
+        public double posFin;
+        public int mini, maxi;
+        private void imageMover(object racername)
+        {
+           
+            //Eleganter: die letzte Stelle von racername, also die Nummer benutzten
+            if (racername.Equals(image_0))
+            {
+                mini = App._gameDaten.racersList[0].minSpeed;
+                maxi = App._gameDaten.racersList[0].maxSpeed;
+            }
+            else if (racername.Equals(image_1))
+            {
+                mini = App._gameDaten.racersList[1].minSpeed;
+                maxi = App._gameDaten.racersList[1].maxSpeed;
+            }
+            else if (racername.Equals(image_2)) { 
+                mini = App._gameDaten.racersList[2].minSpeed;
+                maxi = App._gameDaten.racersList[2].maxSpeed;
+            }
+            else if (racername.Equals(image_3)) { 
+                mini = App._gameDaten.racersList[3].minSpeed;
+                maxi = App._gameDaten.racersList[3].maxSpeed;
+            }
+            else if (racername.Equals(image_4)) { 
+                mini = App._gameDaten.racersList[4].minSpeed;
+                maxi = App._gameDaten.racersList[4].maxSpeed;
+            }
+
+            //Generate Random numbers based on min and max skill values of racers 
+            int rnd = RandomGenerator.rndGen(mini, maxi);
+
+            var rac = racername as Image;
+            var rac2 = racername as Image;
+            posX = (double)rac.GetValue(Canvas.LeftProperty) + 5 + rnd;
+            posFin = (double)rac2.GetValue(Canvas.LeftProperty);
+
+            //Check auf: Racer im Ziel? ansonsten move racer
+            if (rac != null && posFin < finishLine)
+            {
+                rac.SetValue(Canvas.LeftProperty, posX);
+            }
+            else
+            {
+                winner = racername;
+            }
+        }
 
         private void imageChanger(string imgname, object racername)
         {
+            if (true) { 
             BitmapImage bild = new BitmapImage(new Uri(imgname, UriKind.Relative));
+            
+            var rac = racername as Image;
 
-            image_0.Source = bild;
-            image_1.Source = bild;
-            image_2.Source = bild;
-            image_3.Source = bild;
-            image_4.Source = bild;
+            if (rac != null) rac.Source = bild;
+            }
         }
-
 
         private void b_startmethod(object sender, RoutedEventArgs e)
         {        
@@ -116,31 +181,68 @@ namespace SRH_Rennbahn
             b_start.IsEnabled = false;
         }
 
-
         private void b_resetmethod(object sender, RoutedEventArgs e)
         {
             b_start.IsEnabled = true;
             b_reset.IsEnabled = false;
 
             double posStart = 0;
+            image_0.SetValue(Canvas.LeftProperty, posStart);
             image_1.SetValue(Canvas.LeftProperty, posStart);
+            image_2.SetValue(Canvas.LeftProperty, posStart);
+            image_3.SetValue(Canvas.LeftProperty, posStart);
+            image_4.SetValue(Canvas.LeftProperty, posStart);
+        }
+
+        private void cB_player0_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            any_cb_SelectionChanged(sender);            
         }
 
         private void cB_player1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            any_cb_SelectionChanged(sender);
+        }
+
+        private void cB_player2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            any_cb_SelectionChanged(sender);
+        }
+
+        private void cB_player3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            any_cb_SelectionChanged(sender);
+        }
+
+        public void any_cb_SelectionChanged(object sender)
+        {
+            //TESTWERTE
+            App._gameDaten.playersList[0].wallet = 200;
+            App._gameDaten.playersList[1].wallet = 2200;
+            App._gameDaten.playersList[2].wallet = 30000;
+            App._gameDaten.playersList[3].wallet = 0;
+
+            //-----
+
+
             var cbx = sender as ComboBox;
             var kont = ((Player)(sender as ComboBox).SelectedItem).wallet;
 
+            //Ist wallet oder maxbet größer?
             kont = Math.Min(kont, App._gameDaten.maxBet);
 
-            
             //Bestimmten Slider finden
-            var index = cbx.Name.Substring(cbx.Name.Length - 1);
-            Slider sli = (Slider) grid.FindName("sli_slider_" + index);
+            string index = cbx.Name.Substring(cbx.Name.Length - 1);
+            Slider sli = (Slider)grid.FindName("sli_slider_" + index);
             sli.Minimum = 1;
             sli.Maximum = kont;
-            //sli.ToolTip
-            //TextBox tbx = (TextBox) grid.Findname("tB_wallet_" + index);
+            
+            TextBox tbx = (TextBox)grid.FindName("tB_wallet_" + index);
+
+            //Aus gefundenen Slider wallet entnehmen und in entpsrechende tbx eintragen
+            int indexint;
+            indexint = int.Parse(index);
+            if (tbx != null) tbx.Text = App._gameDaten.playersList[indexint].wallet.ToString();
         }
     }
 }

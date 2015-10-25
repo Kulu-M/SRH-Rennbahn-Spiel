@@ -57,7 +57,8 @@ namespace SRH_Rennbahn
                 //Kurzer Weg zum befüllen
                 new Player {name = "Bit", wallet = startingMoney, npc = true},
                 new Player {name = "Byte", wallet = startingMoney, npc = true},
-                new Player {name = "Hashtag", wallet = startingMoney, npc = true}
+                new Player {name = "Hashtag", wallet = startingMoney, npc = true},
+                new Player {name = "Parser", wallet = startingMoney, npc = true}
             };
         }
 
@@ -66,10 +67,10 @@ namespace SRH_Rennbahn
         {
             //Langer Weg zum befüllen
             var r1 = new Racer { name = "Alien", maxSpeed = 9, minSpeed = 3};
-            var r2 = new Racer { name = "Ninja", maxSpeed = 14, minSpeed = 6 };
+            var r2 = new Racer { name = "Sonic", maxSpeed = 30, minSpeed = 9 };
             var r3 = new Racer { name = "Pikachu", maxSpeed = 11, minSpeed = 4 };
-            var r4 = new Racer { name = "Sonic", maxSpeed = 30, minSpeed = 9 };
-            var r5 = new Racer { name = "Zombie", maxSpeed = 5, minSpeed = 2 };
+            var r4 = new Racer { name = "Ninja", maxSpeed = 14, minSpeed = 6 };
+            var r5 = new Racer { name = "Zombie", maxSpeed = 4, minSpeed = 1 };
 
             //Erstellte Elemente der Liste hinzufügen
             racersList.Add(r1);

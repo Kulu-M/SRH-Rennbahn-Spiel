@@ -16,8 +16,8 @@ namespace SRH_Rennbahn
 
         public int racesWon { get; set; }
 
-        public double maxSpeed { get; set; }
-        public double minSpeed { get; set; }
+        public int maxSpeed { get; set; }
+        public int minSpeed { get; set; }
     }
 }
 
