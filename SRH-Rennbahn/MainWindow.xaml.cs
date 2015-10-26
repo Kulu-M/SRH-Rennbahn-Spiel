@@ -9,10 +9,12 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Speech.Synthesis;
 
 
 namespace SRH_Rennbahn
@@ -22,8 +24,12 @@ namespace SRH_Rennbahn
     /// </summary>
     public partial class MainWindow : Window
     {
-        public object winner;
-    
+        public Image winner;
+        public double posX;
+        public double posFin;
+        public int mini, maxi;
+        bool wechsel = false;
+
 
         double finishLine;
         DispatcherTimer timer = new DispatcherTimer();
@@ -40,24 +46,30 @@ namespace SRH_Rennbahn
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
+            //Sprachnachricht
+            //SpeechSynthesizer ss = new SpeechSynthesizer();
+            //ss.Speak("Welcome! It is" + DateTime.Now);
+
             finishLine = (double)brd_finishline.GetValue(Canvas.LeftProperty);
 
             ////Aus einem Pool von Racern nur einige aussuchen, die starten
             //startingRacers.Add(App._gameDaten.racersList[1]);
             //startingRacers.Add(App._gameDaten.racersList[2]);
+            //startingRacers.Add(App._gameDaten.racersList[3]);
+            //startingRacers.Add(App._gameDaten.racersList[4]);
             //for (int i = 0; i < 2; i++)
             //{
-            //    Image img = (Image) can_racetrack.FindName("image_" + i);
+            //    Image img = (Image)can_racetrack.FindName("image_" + i);
             //    var path = "Pics/" + startingRacers[i].name + "/0.png";
             //    BitmapImage bmi = new BitmapImage(new Uri(path, UriKind.Relative));
             //    img.Source = bmi;
             //}
 
 
-
             //geht nicht?
             //grid.DataContext = App._gameDaten;
             //---
+
 
             //KOMBO BOXEN FÜLLEN
             cB_player0.ItemsSource = App._gameDaten.playersList;
@@ -69,22 +81,31 @@ namespace SRH_Rennbahn
             cB_racer2.ItemsSource = App._gameDaten.racersList;
             cB_racer3.ItemsSource = App._gameDaten.racersList;
             //---
+
+            
         }
 
-        bool wechsel = false;
+        
         private void Timer_Tick(object sender, EventArgs e)
         {
             //Method to check for finishline
             checkFinishLine();
 
-            //Method to move pictures
-            imageMover(image_0);
-            imageMover(image_1);
-            imageMover(image_2);
-            imageMover(image_3);
-            imageMover(image_4);
+            if (winner == null)
+            {
+                //Method to move pictures
+                imageMover(image_0);
+                imageMover(image_1);
+                imageMover(image_2);
+                imageMover(image_3);
+                imageMover(image_4);
+            }
+            else
+            {
+                MessageBox.Show("Sieger: " + winner.Name);
+            }
             
-           
+
             //CHANGE IMAGES
             if (wechsel) { 
                 imageChanger("Pics/Sonic/0.png", image_1);
@@ -100,8 +121,7 @@ namespace SRH_Rennbahn
                 imageChanger("Pics/Pikachu/1.png", image_2);
                 imageChanger("Pics/Zombie/1.png", image_4);
             }
-            wechsel = !wechsel;
-            
+            wechsel = !wechsel;    
         }
 
         private void checkFinishLine()
@@ -114,12 +134,12 @@ namespace SRH_Rennbahn
             }
         }
 
-        public double posX;
-        public double posFin;
-        public int mini, maxi;
-        private void imageMover(object racername)
+        
+        private Image imageMover(Image racername)
         {
-           
+            
+
+
             //Eleganter: die letzte Stelle von racername, also die Nummer benutzten
             if (racername.Equals(image_0))
             {
@@ -146,21 +166,19 @@ namespace SRH_Rennbahn
 
             //Generate Random numbers based on min and max skill values of racers 
             int rnd = RandomGenerator.rndGen(mini, maxi);
-
             var rac = racername as Image;
-            var rac2 = racername as Image;
             posX = (double)rac.GetValue(Canvas.LeftProperty) + 5 + rnd;
-            posFin = (double)rac2.GetValue(Canvas.LeftProperty);
+            posFin = (double)rac.GetValue(Canvas.LeftProperty);
+
 
             //Check auf: Racer im Ziel? ansonsten move racer
-            if (rac != null && posFin < finishLine)
+            if (posFin < finishLine)
             {
                 rac.SetValue(Canvas.LeftProperty, posX);
+                return null;
             }
-            else
-            {
-                winner = racername;
-            }
+            winner = racername;
+            return winner;
         }
 
         private void imageChanger(string imgname, object racername)
@@ -179,6 +197,10 @@ namespace SRH_Rennbahn
             timer.Start();
             b_reset.IsEnabled = false;
             b_start.IsEnabled = false;
+
+            //Menü einklappen, wenn gestartet wird
+            Storyboard sb = FindResource("wettbüro_raus") as Storyboard;
+            sb.Begin();
         }
 
         private void b_resetmethod(object sender, RoutedEventArgs e)
@@ -224,7 +246,6 @@ namespace SRH_Rennbahn
 
             //-----
 
-
             var cbx = sender as ComboBox;
             var kont = ((Player)(sender as ComboBox).SelectedItem).wallet;
 
@@ -236,13 +257,20 @@ namespace SRH_Rennbahn
             Slider sli = (Slider)grid.FindName("sli_slider_" + index);
             sli.Minimum = 1;
             sli.Maximum = kont;
-            
-            TextBox tbx = (TextBox)grid.FindName("tB_wallet_" + index);
 
             //Aus gefundenen Slider wallet entnehmen und in entpsrechende tbx eintragen
+            TextBox tbx = (TextBox)grid.FindName("tB_wallet_" + index);
             int indexint;
             indexint = int.Parse(index);
             if (tbx != null) tbx.Text = App._gameDaten.playersList[indexint].wallet.ToString();
         }
+
+        //public void whoIsWinner ()
+        //{
+        //    if (winner.Name == "image_0")
+        //    {
+        //        return null;
+        //    }
+        //}
     }
 }

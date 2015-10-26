@@ -14,9 +14,9 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="wettbüro_rein">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="grid">
+            <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="8"/>
-            </DoubleAnimationUsingKeyFrames>
+            </DoubleAnimationUsingKeyFrames>-->
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="291"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-1"/>
@@ -24,10 +24,10 @@
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp" SourceName="textBlock">
             <BeginStoryboard x:Name="wettbüro_raus_BeginStoryboard" Storyboard="{StaticResource wettbüro_rein}"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+        <EventTrigger RoutedEvent="UIElement.MouseRightButtonUp" SourceName="textBlock">
             <BeginStoryboard x:Name="wettbüro_raus_BeginStoryboard1" Storyboard="{StaticResource wettbüro_raus}"/>
         </EventTrigger>
     </Window.Triggers>
@@ -58,7 +58,7 @@
             <Button Name="b_start"  Content="Start!" Canvas.Left="1000" Canvas.Top="580" Height="35" Width="50" Click="b_startmethod"></Button>
         </Canvas>
 
-        <Grid x:Name="grid" Margin="185,0" Height="372" VerticalAlignment="Bottom" Background="#FFB1ADAD" RenderTransformOrigin="0.5,0.5"
+        <Grid x:Name="grid" Margin="185,0" Height="372" VerticalAlignment="Bottom" Opacity="0.9" Background="#FFB1ADAD" RenderTransformOrigin="0.5,0.5"
               >
             <Grid.Resources>
                 <Style x:Key="Feldüberschrift" TargetType="TextBox">
@@ -132,13 +132,24 @@
 
             <StackPanel Margin="470,120,10,10">
                 <TextBox Name="tB_Einsatz" Text="Einsatz" Style="{StaticResource Feldüberschrift}"/>
-                <Slider Name="sli_slider_0" Style="{StaticResource Slider}" TickPlacement="BottomRight" ToolTip="{Binding Value, RelativeSource={RelativeSource Self}}" TickFrequency="40"/>
+                <Slider Name="sli_slider_0" Style="{StaticResource Slider}" TickPlacement="BottomRight" TickFrequency="40"/>
                 <Slider Name="sli_slider_1" Style="{StaticResource Slider}"/>
                 <Slider Name="sli_slider_2" Style="{StaticResource Slider}"/>
                 <Slider Name="sli_slider_3" Style="{StaticResource Slider}"/>
             </StackPanel>
+
+            <StackPanel Margin="620,120,10,10">
+                <TextBox Text="BLA" Style="{StaticResource Feldüberschrift}"/>
+                <TextBox Name="tB_einsatz_0" Text="{Binding Maximum, ElementName=sli_slider_0}" />
+                <ListBox x:Name="lbx_gewinner" Height="50" Width="200">
+                   <TextBlock Text="{Binding Racer.name}"></TextBlock>
+                </ListBox>
+            </StackPanel>
+            
         </Grid>
+        
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="53,40,0,0" VerticalAlignment="Top" Width="1075"/>
 
     </Grid>
+    
 </Window>

@@ -1,3 +1,39 @@
+Name -> Boxen entfernen?
+Betrag anzeigen -> in BLA Stackpanel
+Hochfahren des Menüs
+Menü sollte nicht während rennen hochfahren bzw. das Stackpanel=disable ausser den buttons
+
+schleife bool array durchgehen
+	methoden an array stelle i 
+	canvas left property etc (bewegen)
+	bild wechseln (imgchanger)
+
+	if pox < finishline
+		gewonnen.Add(runracers[i]);
+
+
+anfang: wenn gewonnen < 0	^ausführen
+
+
+listbox.itemtemplate
+datatemplate
+stackpamel
+textblock
+listbox itemsource
+listbox.itemtemplate
+data template
+stackpanel
+textblock
+
+//
+Racer
+	Spielername
+	Einsatz
+	Gewinn
+	
+
+
+---
 Bis Donnerstag:
 	- Klassen erstellen
 	- 4 Racer
