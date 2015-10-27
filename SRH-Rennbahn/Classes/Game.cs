@@ -30,6 +30,7 @@ namespace SRH_Rennbahn
         //LIST
         public List<Player> playersList = new List<Player>();
         public List<Racer> racersList = new List<Racer>();
+        public List<Einsatz> einsätze = new List<Einsatz>();
 
         //KONSTRUKTOR
         public Game()

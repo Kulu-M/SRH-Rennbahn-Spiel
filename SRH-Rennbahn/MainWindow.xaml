@@ -56,6 +56,7 @@
             <Border BorderBrush="DarkOliveGreen" BorderThickness="1" Height="501" Canvas.Top="5" Width="1" Canvas.Left="-1"/>
             <Button Name="b_reset" Content="Reset" Canvas.Left="1000" Canvas.Top="540" Height="35" Width="50" Click="b_resetmethod" IsEnabled="False"></Button>
             <Button Name="b_start"  Content="Start!" Canvas.Left="1000" Canvas.Top="580" Height="35" Width="50" Click="b_startmethod"></Button>
+            <TextBlock Name="tb_results" Background="Crimson" TextAlignment="Center" Width="916" Height="285" Opacity="0" Canvas.Left="100" Canvas.Top="20" FontSize="32"></TextBlock>
         </Canvas>
 
         <Grid x:Name="grid" Margin="185,0" Height="372" VerticalAlignment="Bottom" Opacity="0.9" Background="#FFB1ADAD" RenderTransformOrigin="0.5,0.5"
@@ -93,7 +94,7 @@
                 <Style x:Key="Slider" TargetType="Slider">
                     <Setter Property="Width" Value="100"/>
                     <Setter Property="HorizontalAlignment" Value="Left"/>
-                    <Setter Property="Margin" Value="10,10,10,15"></Setter>
+                    <Setter Property="Margin" Value="10,5,10,15"></Setter>
                 </Style>
             </Grid.Resources>
             <Grid.RenderTransform>
@@ -132,24 +133,29 @@
 
             <StackPanel Margin="470,120,10,10">
                 <TextBox Name="tB_Einsatz" Text="Einsatz" Style="{StaticResource Feldüberschrift}"/>
-                <Slider Name="sli_slider_0" Style="{StaticResource Slider}" TickPlacement="BottomRight" TickFrequency="40"/>
-                <Slider Name="sli_slider_1" Style="{StaticResource Slider}"/>
-                <Slider Name="sli_slider_2" Style="{StaticResource Slider}"/>
-                <Slider Name="sli_slider_3" Style="{StaticResource Slider}"/>
+                <Slider Name="sli_slider_0" Style="{StaticResource Slider}" TickPlacement="BottomRight" TickFrequency="10"/>
+                <Slider Name="sli_slider_1" Style="{StaticResource Slider}" TickPlacement="BottomRight" TickFrequency="10"/>
+                <Slider Name="sli_slider_2" Style="{StaticResource Slider}" TickPlacement="BottomRight" TickFrequency="10"/>
+                <Slider Name="sli_slider_3" Style="{StaticResource Slider}" TickPlacement="BottomRight" TickFrequency="10"/>
             </StackPanel>
 
-            <StackPanel Margin="620,120,10,10">
-                <TextBox Text="BLA" Style="{StaticResource Feldüberschrift}"/>
-                <TextBox Name="tB_einsatz_0" Text="{Binding Maximum, ElementName=sli_slider_0}" />
-                <ListBox x:Name="lbx_gewinner" Height="50" Width="200">
-                   <TextBlock Text="{Binding Racer.name}"></TextBlock>
-                </ListBox>
+            <StackPanel Margin="570,120,10,10">
+                <TextBox Text="" Style="{StaticResource Feldüberschrift}"/>
+                <TextBox Name="tB_einsatz_0" Style="{StaticResource CreditAnzeigen}" Text="{Binding Value, ElementName=sli_slider_0}" Margin="15,5,0,10" />
+                <TextBox x:Name="tB_einsatz_1" Style="{StaticResource CreditAnzeigen}" Text="{Binding Value, ElementName=sli_slider_1}" Margin="15,12,0,10" />
+                <TextBox Name="tB_einsatz_2" Style="{StaticResource CreditAnzeigen}" Text="{Binding Value, ElementName=sli_slider_2}" Margin="15,11,0,10"/>
+                <TextBox Name="tB_einsatz_3" Style="{StaticResource CreditAnzeigen}" Text="{Binding Value, ElementName=sli_slider_3}" Margin="15,12,0,10"/>
+                <!--<ListBox x:Name="lbx_gewinner" Height="50" Width="200">-->
+                <!--<TextBlock Text="{Binding Racer.name}">
+                       
+                   </TextBlock>-->
+                <!--</ListBox>-->
             </StackPanel>
-            
+
         </Grid>
-        
+
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="53,40,0,0" VerticalAlignment="Top" Width="1075"/>
 
     </Grid>
-    
+
 </Window>
