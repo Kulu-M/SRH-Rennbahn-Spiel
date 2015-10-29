@@ -45,8 +45,6 @@ namespace SRH_Rennbahn
 
             timer.Interval = TimeSpan.FromSeconds(0.01);
             timer.Tick += Timer_Tick;
-
-
         }
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
@@ -286,10 +284,10 @@ namespace SRH_Rennbahn
         public void any_cb_SelectionChanged(object sender)
         {
             //TESTWERTE
-            App._gameDaten.playersList[0].wallet = 200;
-            App._gameDaten.playersList[1].wallet = 2200;
-            App._gameDaten.playersList[2].wallet = 30000;
-            App._gameDaten.playersList[3].wallet = 0;
+            //App._gameDaten.playersList[0].wallet = 200;
+            //App._gameDaten.playersList[1].wallet = 2200;
+            //App._gameDaten.playersList[2].wallet = 30000;
+            //App._gameDaten.playersList[3].wallet = 0;
 
              //-----
 
@@ -328,9 +326,7 @@ namespace SRH_Rennbahn
                             MessageBox.Show(App._gameDaten.einsätze[j].player.wallet.ToString());
                         }  
                     }
-                    
                 }
-                
             }
             catch (Exception e)
             {
